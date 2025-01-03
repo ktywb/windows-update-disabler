@@ -1,73 +1,73 @@
-# Windows Update Disabler
+# Windows 更新禁用工具
 
-![](https://i.imgur.com/pGsWaOt.png 'Something went wrong')
+![](https://i.imgur.com/pGsWaOt.png '出现了问题')
 
-⚡ The one-click way to disable auto updates for good, without leaving leftover stuff running in the background.
+⚡ 一键禁用自动更新的工具，无需担心后台残留运行的程序。
 
-> [!WARNING]  
-> Before running this script, ensure that Windows is fully updated and not currently installing or downloading updates! Interrupting an update could result in breaking your Windows installation!
+> [!警告]  
+> 在运行此脚本之前，请确保 Windows 已完全更新，并且当前没有正在安装或下载的更新！中断更新可能会导致 Windows 系统损坏！
 
-## How to Use
+## 使用方法
 
-### Simple!
+### 非常简单！
 
-1. **Clone or Download:**
+1. **克隆或下载：**
 
-    - Clone this repository using `git clone https://github.com/tsgrgo/windows-update-disabler.git` or download it as a ZIP file and extract it.
+    - 使用 `git clone https://github.com/tsgrgo/windows-update-disabler.git` 克隆此仓库，或者下载 ZIP 文件并解压。
 
-2. **Check for Active Updates:**
+2. **检查是否有正在进行的更新：**
 
-    - Ensure there are no updates currently being installed. Navigate to **Settings > Update & Security > Windows Update** and verify.
+    - 确保当前没有更新正在安装。进入 **设置 > 更新和安全 > Windows 更新** 检查更新状态。
 
-3. **Run the Script:**
+3. **运行脚本：**
 
-    - Execute `disable updates.bat`. This will disable automatic Windows updates.
+    - 执行 `disable updates.bat`。此操作将禁用自动 Windows 更新。
 
-4. **Re-enable Updates (Optional):**
-    - If you need to allow automatic updates again, run `enable updates.bat`. This is a complete inverse function of `disable updates.bat` and will undo all the changes it did.
+4. **重新启用更新（可选）：**
+    - 如果需要再次启用自动更新，运行 `enable updates.bat`。该脚本完全逆转 `disable updates.bat` 所做的所有更改。
 
-## How to Update Manually
+## 手动更新方法
 
-Regular updates are recommended for security. To update manually:
+建议定期更新以保证安全性。手动更新步骤如下：
 
-1. **Enable Updates:**
+1. **启用更新：**
 
-    - Run `enable updates.bat` to re-enable Windows Update.
+    - 运行 `enable updates.bat` 以重新启用 Windows 更新。
 
-2. **Perform Updates:**
+2. **执行更新：**
 
-    - Navigate to **Settings > Update & Security > Windows Update** and install available updates.
+    - 进入 **设置 > 更新和安全 > Windows 更新** 并安装可用的更新。
 
-3. **Disable Updates Again:**
-    - After updating, run `disable updates.bat` again to disable automatic updates.
+3. **再次禁用更新：**
+    - 更新完成后，运行 `disable updates.bat` 再次禁用自动更新。
 
-## Using the Update Service Temporarily
+## 临时启用更新服务
 
-Some applications, like Microsoft Store, depend on the Windows Update service. To temporarily enable the service:
+某些应用（如 Microsoft Store）依赖于 Windows 更新服务。临时启用服务的方法如下：
 
-1. **Enable Update Service:**
+1. **启用更新服务：**
 
-    - Run `use update service.bat` to re-enable the Windows Update Service.
+    - 运行 `use update service.bat` 以重新启用 Windows 更新服务。
 
-2. **Use Dependent Applications:**
+2. **使用依赖应用：**
 
-    - You can now use applications that require the update service.
+    - 现在可以使用需要更新服务的应用程序。
 
-3. **Disable Update Service Again:**
-    - Once done, run `disable updates.bat` to disable the update service again.
+3. **再次禁用更新服务：**
+    - 完成后，运行 `disable updates.bat` 再次禁用更新服务。
 
-## What It Does
+## 它的工作原理
 
-The script performs the following actions to disable automatic updates:
+脚本通过以下操作禁用自动更新：
 
--   Disables the **Windows Update Service (wuauserv)**.
--   Disables the **Update Orchestrator Service (UsoSvc)**.
--   Disables the **Windows Update Medic Service (WaaSMedicSvc)**.
--   Disables all update-related scheduled tasks.
--   Applies registry changes to prevent auto-updates.
+-   禁用 **Windows 更新服务 (wuauserv)**。
+-   禁用 **更新协调器服务 (UsoSvc)**。
+-   禁用 **Windows 更新修复服务 (WaaSMedicSvc)**。
+-   禁用所有与更新相关的计划任务。
+-   应用注册表更改以阻止自动更新。
 
-## Why is PsExec Needed?
+## 为什么需要 PsExec？
 
-Some of the services and tasks involved are protected from user accounts, and they require elevated system privileges to be modified. PsExec allows the script to run commands with the necessary permissions to bypass these restrictions.
+某些服务和任务受到用户账户保护，必须以更高的系统权限进行修改。PsExec 允许脚本以必要的权限运行命令，从而绕过这些限制。
 
-PsExec is part of the official Sysinternals suite from Microsoft. More info: https://docs.microsoft.com/en-us/sysinternals/downloads/psexec
+PsExec 是微软官方 Sysinternals 套件的一部分。更多信息请访问：https://docs.microsoft.com/zh-cn/sysinternals/downloads/psexec
